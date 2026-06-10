@@ -1,0 +1,43 @@
+2026-03-11 11:24:02,396 [INFO] ✅ Job Bot démarré — tourne toutes les heures automatiquement
+2026-03-11 11:24:02,397 [INFO]    Appuie sur CTRL+C pour arrêter
+
+2026-03-11 11:24:02,397 [INFO] ==================================================
+2026-03-11 11:24:02,397 [INFO] DÉMARRAGE D'UN NOUVEAU CYCLE
+2026-03-11 11:24:02,398 [INFO] ==================================================
+2026-03-11 11:24:02,398 [INFO] Offres déjà vues : 0
+2026-03-11 11:24:02,398 [WARNING] Fallback sur Selenium classique (plus détectable)
+2026-03-11 11:24:04,792 [INFO] Recherche : preparateur de commandes
+2026-03-11 11:25:24,835 [WARNING] Aucune offre trouvée — possible CAPTCHA ou changement de structure Indeed
+2026-03-11 11:25:24,931 [INFO] Capture d'écran sauvegardée : debug_screenshot.png
+2026-03-11 11:25:25,997 [INFO] Recherche : agent accueil
+2026-03-11 11:26:48,634 [WARNING] Aucune offre trouvée — possible CAPTCHA ou changement de structure Indeed
+2026-03-11 11:26:48,736 [INFO] Capture d'écran sauvegardée : debug_screenshot.png
+2026-03-11 11:26:50,212 [INFO] Recherche : employe administratif
+2026-03-11 11:28:09,707 [WARNING] Aucune offre trouvée — possible CAPTCHA ou changement de structure Indeed
+2026-03-11 11:28:09,795 [INFO] Capture d'écran sauvegardée : debug_screenshot.png
+2026-03-11 11:28:11,125 [INFO] Recherche : vendeur
+2026-03-11 11:29:30,306 [WARNING] Aucune offre trouvée — possible CAPTCHA ou changement de structure Indeed
+2026-03-11 11:29:30,376 [INFO] Capture d'écran sauvegardée : debug_screenshot.png
+2026-03-11 11:29:34,421 [INFO] Nouvelles offres ce cycle : 0
+2026-03-11 11:29:34,421 [INFO] Aucune nouvelle offre à sauvegarder.
+2026-03-11 11:29:34,421 [INFO] Prochain cycle dans 1h
+2026-03-11 12:29:34,469 [INFO] ==================================================
+2026-03-11 12:29:34,475 [INFO] DÉMARRAGE D'UN NOUVEAU CYCLE
+2026-03-11 12:29:34,475 [INFO] ==================================================
+2026-03-11 12:29:34,477 [INFO] Offres déjà vues : 0
+2026-03-11 12:29:34,478 [WARNING] Fallback sur Selenium classique (plus détectable)
+2026-03-11 12:29:37,961 [INFO] Recherche : preparateur de commandes
+2026-03-11 12:30:59,262 [WARNING] Aucune offre trouvée — possible CAPTCHA ou changement de structure Indeed
+2026-03-11 12:30:59,354 [INFO] Capture d'écran sauvegardée : debug_screenshot.png
+2026-03-11 12:31:01,064 [INFO] Recherche : agent accueil
+2026-03-11 12:32:21,268 [WARNING] Aucune offre trouvée — possible CAPTCHA ou changement de structure Indeed
+2026-03-11 12:32:21,365 [INFO] Capture d'écran sauvegardée : debug_screenshot.png
+2026-03-11 12:32:22,837 [INFO] Recherche : employe administratif
+2026-03-11 12:33:42,610 [WARNING] Aucune offre trouvée — possible CAPTCHA ou changement de structure Indeed
+2026-03-11 12:33:42,807 [INFO] Capture d'écran sauvegardée : debug_screenshot.png
+2026-03-11 12:33:44,191 [INFO] Recherche : vendeur
+2026-03-11 12:35:04,341 [WARNING] Aucune offre trouvée — possible CAPTCHA ou changement de structure Indeed
+2026-03-11 12:35:04,444 [INFO] Capture d'écran sauvegardée : debug_screenshot.png
+2026-03-11 12:35:08,445 [INFO] Nouvelles offres ce cycle : 0
+2026-03-11 12:35:08,446 [INFO] Aucune nouvelle offre à sauvegarder.
+2026-03-11 12:35:08,446 [INFO] Prochain cycle dans 1h
