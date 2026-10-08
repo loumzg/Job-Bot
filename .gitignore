@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# Environnements
+.venv/
+venv/
+.env
+
+# Sorties et état local du bot
+*.log
+logs/
+*.csv
+output/
+seen_jobs.*
+jobs_results.*
+applied_jobs.*
+debug_screenshot.png
+
+# Config locale (l'exemple config.example.toml reste commité)
+config.toml
+offres_*.json

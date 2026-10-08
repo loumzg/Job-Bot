@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "job-bot"
+version = "2.0.0"
+description = "Recherche et filtrage d'offres d'emploi par secteur et mots-clés (API France Travail, flux RSS)."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "loumzg" }]
+requires-python = ">=3.11"
+dependencies = ["requests>=2.31"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+job-bot = "job_bot.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+job_bot = ["py.typed", "data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
