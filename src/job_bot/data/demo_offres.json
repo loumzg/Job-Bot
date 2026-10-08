@@ -1,0 +1,65 @@
+{
+  "_commentaire": "Offres FICTIVES au format de l'API France Travail, pour le mode --dry-run.",
+  "resultats": [
+    {
+      "id": "DEMO001",
+      "intitule": "Préparateur de commandes H/F",
+      "description": "Préparation et contrôle des commandes en entrepôt. Débutant accepté.",
+      "dateCreation": "2026-10-01T08:30:00.000Z",
+      "lieuTravail": {"libelle": "69 - LYON 07", "latitude": 45.7456, "longitude": 4.8423, "codePostal": "69007", "commune": "69387"},
+      "romeCode": "N1103",
+      "romeLibelle": "Magasinage et préparation de commandes",
+      "entreprise": {"nom": "Logistique Exemple"},
+      "typeContrat": "CDI",
+      "secteurActivite": "52",
+      "secteurActiviteLibelle": "Entreposage et stockage",
+      "origineOffre": {"origine": "1", "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO001"}
+    },
+    {
+      "id": "DEMO002",
+      "intitule": "Vendeur en magasin de sport",
+      "description": "Conseil client, mise en rayon, encaissement.",
+      "dateCreation": "2026-09-29T10:00:00.000Z",
+      "lieuTravail": {"libelle": "69 - VILLEURBANNE", "latitude": 45.7667, "longitude": 4.8803},
+      "romeCode": "D1211",
+      "entreprise": {"nom": "Sport Exemple"},
+      "typeContrat": "CDD",
+      "secteurActivite": "47",
+      "secteurActiviteLibelle": "Commerce de détail"
+    },
+    {
+      "id": "DEMO003",
+      "intitule": "Livreur - vendeur itinérant",
+      "description": "Tournées de livraison. Permis B obligatoire, véhicule de service fourni.",
+      "dateCreation": "2026-09-30T07:00:00.000Z",
+      "lieuTravail": {"libelle": "69 - LYON 03", "latitude": 45.7597, "longitude": 4.8590},
+      "romeCode": "N4105",
+      "entreprise": {"nom": "Transports Exemple"},
+      "typeContrat": "CDI",
+      "secteurActivite": "49",
+      "permis": [{"libelle": "B - Véhicule léger Exigé", "exigence": "E"}]
+    },
+    {
+      "id": "DEMO004",
+      "intitule": "Agent d'accueil",
+      "description": "Accueil physique et téléphonique, gestion du courrier.",
+      "dateCreation": "2026-09-20T09:15:00.000Z",
+      "lieuTravail": {"libelle": "75 - PARIS 11", "latitude": 48.8590, "longitude": 2.3800},
+      "romeCode": "M1601",
+      "entreprise": {"nom": "Services Exemple"},
+      "typeContrat": "CDD",
+      "secteurActivite": "82"
+    },
+    {
+      "id": "DEMO005",
+      "intitule": "Employé administratif",
+      "description": "Saisie, classement, suivi de dossiers clients.",
+      "dateCreation": "2026-10-02T14:00:00.000Z",
+      "lieuTravail": {"libelle": "69 - LYON 02"},
+      "romeCode": "M1602",
+      "entreprise": {"nom": "Bureau Exemple"},
+      "typeContrat": "CDI",
+      "secteurActivite": "69"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+# Configuration de Job-Bot — copier ce fichier en config.toml puis l'adapter.
+# Toutes les valeurs peuvent être surchargées en ligne de commande (job-bot --help).
+
+[recherche]
+# Une recherche par mot-clé côté API, résultats fusionnés et dédupliqués.
+mots_cles = ["preparateur de commandes", "agent accueil", "employe administratif", "vendeur"]
+# Codes ROME (métiers). Un préfixe filtre localement toute une famille (ex. "M18").
+codes_rome = []
+# Secteurs d'activité : divisions NAF à 2 chiffres (ex. "47" commerce de détail).
+# L'API en accepte 2 au maximum ; au-delà, le filtrage est fait localement.
+secteurs = []
+# Types de contrat France Travail (ex. "CDI", "CDD", "MIS" pour l'intérim).
+types_contrat = []
+# Offres publiées depuis au plus N jours (0 = pas de limite).
+publiee_depuis_jours = 7
+# Nombre maximal d'offres récupérées par mot-clé (plafonné à 1150 par l'API).
+max_resultats = 150
+
+[localisation]
+# Nom de ville, converti en code INSEE via geo.api.gouv.fr...
+ville = "Paris"
+# ...ou directement un code INSEE (prioritaire), ex. "75056" pour Paris.
+commune = ""
+# Utilisé seulement si aucune commune n'est définie, ex. "75".
+departement = ""
+rayon_km = 10
+
+[filtres]
+# Expressions à exclure (comparaison sans accents ni majuscules).
+exclusions = ["permis b obligatoire", "vehicule obligatoire"]
+# true : écarte toute offre qui déclare un permis exigé.
+exclure_permis_exige = false
+
+[sources]
+# "france_travail" (API officielle), "rss" (flux publics), "fixture" (fichier JSON local).
+actives = ["france_travail"]
+
+[sources.rss]
+urls = []
+
+[sources.fixture]
+# fichier = "mes_offres.json"   # par défaut : offres fictives fournies avec le paquet
+
+[sortie]
+dossier = "output"
+formats = ["csv", "json"]
+fichier_vues = "output/seen_jobs.json"
+fichier_log = "logs/job_bot.log"
+# true : n'exporte que les offres jamais vues lors des exécutions précédentes.
+seulement_nouvelles = true
+
+[planification]
+# Mode --boucle : intervalle entre deux recherches (15 minutes minimum).
+intervalle_minutes = 60
