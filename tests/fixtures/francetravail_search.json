@@ -1,0 +1,40 @@
+{
+  "resultats": [
+    {
+      "id": "100AAAA",
+      "intitule": "Développeur Python H/F",
+      "description": "Développement d'API REST en Python. Télétravail partiel.",
+      "dateCreation": "2026-10-05T09:12:44.000Z",
+      "dateActualisation": "2026-10-06T10:00:00.000Z",
+      "lieuTravail": {"libelle": "33 - BORDEAUX", "latitude": 44.8378, "longitude": -0.5792, "codePostal": "33000", "commune": "33063"},
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {"nom": "Exemple SAS"},
+      "typeContrat": "CDI",
+      "typeContratLibelle": "Contrat à durée indéterminée",
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation informatique",
+      "origineOffre": {"origine": "1", "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/100AAAA"}
+    },
+    {
+      "id": "100BBBB",
+      "intitule": "Chauffeur livreur",
+      "description": "Livraisons en ville.",
+      "dateCreation": "2026-09-01T06:00:00Z",
+      "lieuTravail": {"libelle": "33 - MERIGNAC", "latitude": "44.84", "longitude": "-0.65"},
+      "romeCode": "N4105",
+      "typeContrat": "CDD",
+      "permis": [
+        {"libelle": "B - Véhicule léger Exigé", "exigence": "E"},
+        {"libelle": "C - Poids lourd", "exigence": "S"}
+      ]
+    },
+    {
+      "id": "100CCCC",
+      "intitule": "Offre minimale"
+    }
+  ],
+  "filtresPossibles": [
+    {"filtre": "typeContrat", "agregation": [{"valeurPossible": "CDI", "nbResultats": 1}]}
+  ]
+}
