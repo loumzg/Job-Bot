@@ -10,7 +10,24 @@ from typing import Any
 
 MIN_INTERVAL_MINUTES = 15
 KNOWN_SOURCES = ("france_travail", "rss", "fixture")
-KNOWN_FORMATS = ("csv", "json")
+KNOWN_FORMATS = ("csv", "json", "html")
+KNOWN_SCOPES = ("dev_web", "aucun")
+
+# Périmètre par défaut : métiers du développement web (une recherche API par mot-clé).
+DEFAULT_KEYWORDS = [
+    "développeur web",
+    "développeur front end",
+    "développeur back end",
+    "développeur full stack",
+    "développeur javascript",
+    "développeur php",
+    "développeur ia",
+    "intégrateur web",
+    "webmaster",
+]
+# M1805 « Études et développement informatique » ; E1101 « Animation de site multimédia »
+# (fiche ROME des webmasters et intégrateurs web).
+DEFAULT_ROME_CODES = ["M1805", "E1101"]
 
 
 class ConfigError(ValueError):
@@ -19,8 +36,8 @@ class ConfigError(ValueError):
 
 @dataclass(slots=True)
 class SearchConfig:
-    keywords: list[str] = field(default_factory=list)
-    rome_codes: list[str] = field(default_factory=list)
+    keywords: list[str] = field(default_factory=lambda: list(DEFAULT_KEYWORDS))
+    rome_codes: list[str] = field(default_factory=lambda: list(DEFAULT_ROME_CODES))
     sectors: list[str] = field(default_factory=list)
     contract_types: list[str] = field(default_factory=list)
     max_age_days: int | None = 7
@@ -39,6 +56,7 @@ class LocationConfig:
 class FilterConfig:
     exclusions: list[str] = field(default_factory=list)
     exclude_required_license: bool = False
+    scope: str = "dev_web"
 
 
 @dataclass(slots=True)
@@ -67,6 +85,8 @@ class Config:
             raise ConfigError(f"Source(s) inconnue(s) : {', '.join(unknown)} (connues : {', '.join(KNOWN_SOURCES)})")
         if not self.sources:
             raise ConfigError("Aucune source active.")
+        if self.filters.scope not in KNOWN_SCOPES:
+            raise ConfigError(f"Périmètre inconnu : {self.filters.scope} (connus : {', '.join(KNOWN_SCOPES)})")
         bad_formats = [f for f in self.output.formats if f not in KNOWN_FORMATS]
         if bad_formats:
             raise ConfigError(f"Format(s) d'export inconnu(s) : {', '.join(bad_formats)}")
@@ -103,8 +123,9 @@ def from_dict(data: dict[str, Any]) -> Config:
     out_dir = Path(out.get("dossier", "output"))
     cfg = Config(
         search=SearchConfig(
-            keywords=_str_list(rech.get("mots_cles"), "recherche.mots_cles"),
-            rome_codes=[c.upper() for c in _str_list(rech.get("codes_rome"), "recherche.codes_rome")],
+            keywords=_str_list(rech.get("mots_cles", DEFAULT_KEYWORDS), "recherche.mots_cles"),
+            rome_codes=[c.upper() for c in _str_list(rech.get("codes_rome", DEFAULT_ROME_CODES),
+                                                     "recherche.codes_rome")],
             sectors=_str_list(rech.get("secteurs"), "recherche.secteurs"),
             contract_types=[c.upper() for c in _str_list(rech.get("types_contrat"), "recherche.types_contrat")],
             max_age_days=int(max_age) if max_age else None,
@@ -119,6 +140,7 @@ def from_dict(data: dict[str, Any]) -> Config:
         filters=FilterConfig(
             exclusions=_str_list(filt.get("exclusions"), "filtres.exclusions"),
             exclude_required_license=bool(filt.get("exclure_permis_exige", False)),
+            scope=str(filt.get("perimetre", "dev_web")).strip().lower() or "aucun",
         ),
         output=OutputConfig(
             directory=out_dir,

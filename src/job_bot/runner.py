@@ -13,6 +13,7 @@ from job_bot.config import Config
 from job_bot.filters import Criteria, apply_filters
 from job_bot.geo import Place, resolve_city
 from job_bot.models import JobOffer
+from job_bot.report import ReportContext
 from job_bot.sources import SERVER_SIDE_KEYWORDS, JobSource, SearchQuery, SourceError
 from job_bot.storage import SeenStore, deduplicate, export
 
@@ -68,9 +69,25 @@ def build_criteria(config: Config, place: Place | None) -> Criteria:
         contract_types=config.search.contract_types,
         exclusions=config.filters.exclusions,
         exclude_required_license=config.filters.exclude_required_license,
+        scope=config.filters.scope,
         max_age_days=config.search.max_age_days,
         center=center,
         radius_km=float(config.location.radius_km) if center else None,
+    )
+
+
+def report_context(config: Config, place: Place | None, fetched: int | None = None) -> ReportContext:
+    center = None
+    if place and place.latitude is not None and place.longitude is not None:
+        center = (place.latitude, place.longitude)
+    loc = config.location
+    where = place.name if place else loc.city or (f"département {loc.department}" if loc.department else "")
+    return ReportContext(
+        keywords=config.search.keywords,
+        place=where,
+        radius_km=loc.radius_km if place else None,
+        center=center,
+        fetched=fetched,
     )
 
 
@@ -109,7 +126,8 @@ def run_once(
     log.info("%d offres retenues (%d récupérées)", len(unique), result.fetched)
 
     if write and unique:
-        result.exported = export(unique, config.output.directory, config.output.formats)
+        context = report_context(config, place, result.fetched)
+        result.exported = export(unique, config.output.directory, config.output.formats, context=context)
         for path in result.exported:
             log.info("Export : %s", path)
     if write and store is not None:

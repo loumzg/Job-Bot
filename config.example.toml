@@ -2,10 +2,23 @@
 # Toutes les valeurs peuvent être surchargées en ligne de commande (job-bot --help).
 
 [recherche]
+# Périmètre par défaut : métiers du développement web.
 # Une recherche par mot-clé côté API, résultats fusionnés et dédupliqués.
-mots_cles = ["preparateur de commandes", "agent accueil", "employe administratif", "vendeur"]
+# Localement, accents, casse et variantes sont ignorés (« full stack » = « Full-Stack »).
+mots_cles = [
+  "développeur web",
+  "développeur front end",
+  "développeur back end",
+  "développeur full stack",
+  "développeur javascript",
+  "développeur php",
+  "développeur ia",
+  "intégrateur web",
+  "webmaster",
+]
 # Codes ROME (métiers). Un préfixe filtre localement toute une famille (ex. "M18").
-codes_rome = []
+# M1805 : Études et développement informatique ; E1101 : Animation de site multimédia (webmasters).
+codes_rome = ["M1805", "E1101"]
 # Secteurs d'activité : divisions NAF à 2 chiffres (ex. "47" commerce de détail).
 # L'API en accepte 2 au maximum ; au-delà, le filtrage est fait localement.
 secteurs = []
@@ -26,8 +39,14 @@ departement = ""
 rayon_km = 10
 
 [filtres]
-# Expressions à exclure (comparaison sans accents ni majuscules).
-exclusions = ["permis b obligatoire", "vehicule obligatoire"]
+# Périmètre métier appliqué à toutes les sources : "dev_web" (défaut) ou "aucun".
+# dev_web garde développeur web / front-end / back-end / full stack, développeur IA
+# (agents, LLM), intégrateur web, webmaster, développeur JavaScript, PHP, Python web…
+# et écarte les faux positifs : développeur commercial, business developer,
+# développement durable, technicien support / réseau, data analyst, embarqué, COBOL…
+perimetre = "dev_web"
+# Expressions à exclure en plus (intitulé, description et permis ; sans accents ni majuscules).
+exclusions = ["stage non remunere"]
 # true : écarte toute offre qui déclare un permis exigé.
 exclure_permis_exige = false
 
@@ -43,6 +62,7 @@ urls = []
 
 [sortie]
 dossier = "output"
+# csv, json et/ou html (rapport autonome, à ouvrir dans un navigateur)
 formats = ["csv", "json"]
 fichier_vues = "output/seen_jobs.json"
 fichier_log = "logs/job_bot.log"

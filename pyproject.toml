@@ -12,6 +12,10 @@ authors = [{ name = "loumzg" }]
 requires-python = ">=3.11"
 dependencies = ["requests>=2.31"]
 
+[project.urls]
+Homepage = "https://github.com/loumzg/Job-Bot"
+Issues = "https://github.com/loumzg/Job-Bot/issues"
+
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 
@@ -22,7 +26,7 @@ job-bot = "job_bot.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-job_bot = ["py.typed", "data/*.json"]
+job_bot = ["py.typed", "data/*.json", "templates/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -1,65 +1,578 @@
 {
-  "_commentaire": "Offres FICTIVES au format de l'API France Travail, pour le mode --dry-run.",
+  "_commentaire": "Offres FICTIVES au format de l'API France Travail, pour le mode --dry-run. Les sept dernières sont des faux positifs que le périmètre dev_web écarte.",
   "resultats": [
     {
       "id": "DEMO001",
-      "intitule": "Préparateur de commandes H/F",
-      "description": "Préparation et contrôle des commandes en entrepôt. Débutant accepté.",
-      "dateCreation": "2026-10-01T08:30:00.000Z",
-      "lieuTravail": {"libelle": "69 - LYON 07", "latitude": 45.7456, "longitude": 4.8423, "codePostal": "69007", "commune": "69387"},
-      "romeCode": "N1103",
-      "romeLibelle": "Magasinage et préparation de commandes",
-      "entreprise": {"nom": "Logistique Exemple"},
+      "intitule": "Développeur web full stack React / Node.js H/F",
+      "description": "Conception d'une application SaaS de réservation : front en React et TypeScript, API Node.js, PostgreSQL. Revue de code, tests automatisés, déploiement continu.",
+      "dateCreation": "2026-10-08T08:10:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 02",
+        "latitude": 45.7485,
+        "longitude": 4.827
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Atelier Numérique Exemple"
+      },
       "typeContrat": "CDI",
-      "secteurActivite": "52",
-      "secteurActiviteLibelle": "Entreposage et stockage",
-      "origineOffre": {"origine": "1", "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO001"}
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO001"
+      }
     },
     {
       "id": "DEMO002",
-      "intitule": "Vendeur en magasin de sport",
-      "description": "Conseil client, mise en rayon, encaissement.",
-      "dateCreation": "2026-09-29T10:00:00.000Z",
-      "lieuTravail": {"libelle": "69 - VILLEURBANNE", "latitude": 45.7667, "longitude": 4.8803},
-      "romeCode": "D1211",
-      "entreprise": {"nom": "Sport Exemple"},
-      "typeContrat": "CDD",
-      "secteurActivite": "47",
-      "secteurActiviteLibelle": "Commerce de détail"
+      "intitule": "Développeuse / Développeur Front-End Vue.js",
+      "description": "Intégration des maquettes Figma en Vue 3, composants accessibles, performances web (Core Web Vitals). Travail en binôme avec l'équipe produit.",
+      "dateCreation": "2026-10-07T14:30:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - VILLEURBANNE",
+        "latitude": 45.7667,
+        "longitude": 4.8803
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Studio Pixel Exemple"
+      },
+      "typeContrat": "CDI",
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO002"
+      }
     },
     {
       "id": "DEMO003",
-      "intitule": "Livreur - vendeur itinérant",
-      "description": "Tournées de livraison. Permis B obligatoire, véhicule de service fourni.",
-      "dateCreation": "2026-09-30T07:00:00.000Z",
-      "lieuTravail": {"libelle": "69 - LYON 03", "latitude": 45.7597, "longitude": 4.8590},
-      "romeCode": "N4105",
-      "entreprise": {"nom": "Transports Exemple"},
+      "intitule": "Développeur back-end PHP / Symfony H/F",
+      "description": "Évolution d'une plateforme web métier en Symfony 7 : API REST, Doctrine, files de messages, tests PHPUnit. Télétravail deux jours par semaine.",
+      "dateCreation": "2026-10-07T09:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 03",
+        "latitude": 45.7597,
+        "longitude": 4.859
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Logiciels Exemple"
+      },
       "typeContrat": "CDI",
-      "secteurActivite": "49",
-      "permis": [{"libelle": "B - Véhicule léger Exigé", "exigence": "E"}]
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO003"
+      }
     },
     {
       "id": "DEMO004",
-      "intitule": "Agent d'accueil",
-      "description": "Accueil physique et téléphonique, gestion du courrier.",
-      "dateCreation": "2026-09-20T09:15:00.000Z",
-      "lieuTravail": {"libelle": "75 - PARIS 11", "latitude": 48.8590, "longitude": 2.3800},
-      "romeCode": "M1601",
-      "entreprise": {"nom": "Services Exemple"},
-      "typeContrat": "CDD",
-      "secteurActivite": "82"
+      "intitule": "Développeur IA – agents et LLM (H/F)",
+      "description": "Intégration de LLM dans les produits clients : agents IA, RAG sur documentation interne, Python et FastAPI, évaluation des réponses, interface web en React.",
+      "dateCreation": "2026-10-06T10:15:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 07",
+        "latitude": 45.7456,
+        "longitude": 4.8423
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Agence Data Exemple"
+      },
+      "typeContrat": "CDI",
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO004"
+      }
     },
     {
       "id": "DEMO005",
-      "intitule": "Employé administratif",
-      "description": "Saisie, classement, suivi de dossiers clients.",
-      "dateCreation": "2026-10-02T14:00:00.000Z",
-      "lieuTravail": {"libelle": "69 - LYON 02"},
-      "romeCode": "M1602",
-      "entreprise": {"nom": "Bureau Exemple"},
+      "intitule": "Intégrateur web HTML / CSS (H/F)",
+      "description": "Intégration de sites vitrines et de newsletters responsives : HTML sémantique, CSS (Sass), accessibilité RGAA, un peu de JavaScript.",
+      "dateCreation": "2026-10-06T08:45:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 06",
+        "latitude": 45.7699,
+        "longitude": 4.8516
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Agence Créative Exemple"
+      },
+      "typeContrat": "CDD",
+      "secteurActivite": "73",
+      "secteurActiviteLibelle": "Publicité et études de marché",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO005"
+      }
+    },
+    {
+      "id": "DEMO006",
+      "intitule": "Webmaster WordPress",
+      "description": "Mise à jour du site WordPress, création de pages et de formulaires, suivi d'audience, optimisation du référencement naturel.",
+      "dateCreation": "2026-10-05T11:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 09",
+        "latitude": 45.7741,
+        "longitude": 4.8059
+      },
+      "romeCode": "E1101",
+      "romeLibelle": "Animation de site multimédia",
+      "entreprise": {
+        "nom": "Musée Exemple"
+      },
+      "typeContrat": "CDD",
+      "secteurActivite": "70",
+      "secteurActiviteLibelle": "Activités des sièges sociaux ; conseil de gestion",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO006"
+      }
+    },
+    {
+      "id": "DEMO007",
+      "intitule": "Développeur JavaScript / TypeScript",
+      "description": "Mission de six mois : refonte d'un back-office en TypeScript, composants React, tests Playwright. Équipe de cinq développeurs.",
+      "dateCreation": "2026-10-05T07:30:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - ECULLY",
+        "latitude": 45.7747,
+        "longitude": 4.7769
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Intérim Tech Exemple"
+      },
+      "typeContrat": "MIS",
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO007"
+      }
+    },
+    {
+      "id": "DEMO008",
+      "intitule": "Développeur web Laravel H/F",
+      "description": "Développement d'un extranet client en Laravel et Livewire, MySQL, API REST pour l'application mobile.",
+      "dateCreation": "2026-10-04T15:20:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 09",
+        "latitude": 45.7741,
+        "longitude": 4.8059
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Solutions Exemple"
+      },
       "typeContrat": "CDI",
-      "secteurActivite": "69"
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO008"
+      }
+    },
+    {
+      "id": "DEMO009",
+      "intitule": "Dév. Fullstack TypeScript / Next.js",
+      "description": "Produit en lancement : Next.js, tRPC, Prisma, Tailwind CSS. Vous livrez en production chaque semaine.",
+      "dateCreation": "2026-10-04T09:40:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 01",
+        "latitude": 45.7676,
+        "longitude": 4.8344
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Jeune Pousse Exemple"
+      },
+      "typeContrat": "CDD",
+      "secteurActivite": "58",
+      "secteurActiviteLibelle": "Édition",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO009"
+      }
+    },
+    {
+      "id": "DEMO010",
+      "intitule": "Développeur Angular / Java",
+      "description": "Côté front-end, applications Angular pour les conseillers ; côté serveur, services Java Spring. Méthode agile, revue de code.",
+      "dateCreation": "2026-10-03T13:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LIMONEST",
+        "latitude": 45.8372,
+        "longitude": 4.7714
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Assurances Exemple"
+      },
+      "typeContrat": "CDI",
+      "secteurActivite": "64",
+      "secteurActiviteLibelle": "Activités des services financiers",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO010"
+      }
+    },
+    {
+      "id": "DEMO011",
+      "intitule": "Développeur PHP WordPress / WooCommerce",
+      "description": "Maintenance et évolution d'une boutique WooCommerce : thèmes enfants, extensions sur mesure en PHP, performances du site.",
+      "dateCreation": "2026-10-02T10:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - CALUIRE-ET-CUIRE",
+        "latitude": 45.7953,
+        "longitude": 4.8467
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Boutique en ligne Exemple"
+      },
+      "typeContrat": "CDD",
+      "secteurActivite": "47",
+      "secteurActiviteLibelle": "Commerce de détail",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO011"
+      }
+    },
+    {
+      "id": "DEMO012",
+      "intitule": "Intégratrice / Intégrateur web e-commerce Shopify",
+      "description": "Intégration de thèmes Shopify (Liquid, HTML, CSS, JavaScript), pages promotionnelles, tests sur mobile.",
+      "dateCreation": "2026-10-02T08:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - SAINT-PRIEST",
+        "latitude": 45.6967,
+        "longitude": 4.9439
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Intérim Digital Exemple"
+      },
+      "typeContrat": "MIS",
+      "secteurActivite": "47",
+      "secteurActiviteLibelle": "Commerce de détail",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO012"
+      }
+    },
+    {
+      "id": "DEMO013",
+      "intitule": "Ingénieur IA appliquée – intégration de LLM",
+      "description": "Au sein d'une équipe de développeurs, vous intégrez des LLM dans des applications web : agents conversationnels, appels d'outils, garde-fous, API REST en Python.",
+      "dateCreation": "2026-10-01T16:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 07",
+        "latitude": 45.7456,
+        "longitude": 4.8423
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Conseil Exemple"
+      },
+      "typeContrat": "CDI",
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO013"
+      }
+    },
+    {
+      "id": "DEMO014",
+      "intitule": "Développeur Node.js back-end – API",
+      "description": "Conception d'API GraphQL et REST en Node.js (NestJS), PostgreSQL, Redis, observabilité.",
+      "dateCreation": "2026-09-30T09:30:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 02",
+        "latitude": 45.7485,
+        "longitude": 4.827
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Mobilité Exemple"
+      },
+      "typeContrat": "CDI",
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO014"
+      }
+    },
+    {
+      "id": "DEMO015",
+      "intitule": "Développeur React / React Native",
+      "description": "Application web et mobile en JavaScript / TypeScript : React, React Native, design system partagé.",
+      "dateCreation": "2026-09-29T14:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - VILLEURBANNE",
+        "latitude": 45.7667,
+        "longitude": 4.8803
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Santé Connectée Exemple"
+      },
+      "typeContrat": "CDD",
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO015"
+      }
+    },
+    {
+      "id": "DEMO016",
+      "intitule": "Développeur agentique (agents IA, MCP) H/F",
+      "description": "Conception d'agents IA qui automatisent des tâches métier : orchestration de LLM, serveurs MCP, TypeScript et Python, tableau de bord web.",
+      "dateCreation": "2026-09-28T10:45:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 03",
+        "latitude": 45.7597,
+        "longitude": 4.859
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Automatisation Exemple"
+      },
+      "typeContrat": "CDI",
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO016"
+      }
+    },
+    {
+      "id": "DEMO017",
+      "intitule": "Webmestre / développeur web",
+      "description": "Gestion du site institutionnel (Drupal), accessibilité, petits développements PHP et JavaScript.",
+      "dateCreation": "2026-09-26T08:30:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - BRON",
+        "latitude": 45.7386,
+        "longitude": 4.9136
+      },
+      "romeCode": "E1101",
+      "romeLibelle": "Animation de site multimédia",
+      "entreprise": {
+        "nom": "Collectivité Exemple"
+      },
+      "typeContrat": "CDD",
+      "secteurActivite": "70",
+      "secteurActiviteLibelle": "Activités des sièges sociaux ; conseil de gestion",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO017"
+      }
+    },
+    {
+      "id": "DEMO018",
+      "intitule": "Lead dev back-end Python / Django",
+      "description": "Encadrement de trois développeurs, architecture Django et Django REST Framework, intégration continue, mentorat.",
+      "dateCreation": "2026-09-24T11:15:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 07",
+        "latitude": 45.7456,
+        "longitude": 4.8423
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Plateforme Exemple"
+      },
+      "typeContrat": "CDI",
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO018"
+      }
+    },
+    {
+      "id": "DEMO019",
+      "intitule": "Développeur commercial B2B H/F",
+      "description": "Prospection de nouveaux clients pour nos solutions web, rendez-vous terrain, suivi du portefeuille. Profil développeur d'affaires.",
+      "dateCreation": "2026-10-07T08:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 03",
+        "latitude": 45.7597,
+        "longitude": 4.859
+      },
+      "romeCode": "D1407",
+      "romeLibelle": "Relation technico-commerciale",
+      "entreprise": {
+        "nom": "Éditeur Exemple"
+      },
+      "typeContrat": "CDI",
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO019"
+      }
+    },
+    {
+      "id": "DEMO020",
+      "intitule": "Business developer SaaS",
+      "description": "Développement du chiffre d'affaires d'un outil destiné aux développeurs web, démonstrations, salons.",
+      "dateCreation": "2026-10-03T09:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 01",
+        "latitude": 45.7676,
+        "longitude": 4.8344
+      },
+      "romeCode": "D1407",
+      "romeLibelle": "Relation technico-commerciale",
+      "entreprise": {
+        "nom": "Jeune Pousse Exemple"
+      },
+      "typeContrat": "CDI",
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO020"
+      }
+    },
+    {
+      "id": "DEMO021",
+      "intitule": "Chargé de mission développement durable",
+      "description": "Animation de la démarche RSE, bilan carbone, coordination avec le développeur web interne pour la page engagements.",
+      "dateCreation": "2026-10-01T10:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - VENISSIEUX",
+        "latitude": 45.6975,
+        "longitude": 4.8867
+      },
+      "entreprise": {
+        "nom": "Groupe Exemple"
+      },
+      "typeContrat": "CDD",
+      "secteurActivite": "70",
+      "secteurActiviteLibelle": "Activités des sièges sociaux ; conseil de gestion",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO021"
+      }
+    },
+    {
+      "id": "DEMO022",
+      "intitule": "Technicien support informatique / helpdesk",
+      "description": "Assistance aux utilisateurs, gestion des tickets, préparation des postes ; relais auprès des développeurs web pour les incidents applicatifs.",
+      "dateCreation": "2026-09-30T08:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - BRON",
+        "latitude": 45.7386,
+        "longitude": 4.9136
+      },
+      "romeCode": "I1401",
+      "romeLibelle": "Maintenance informatique et bureautique",
+      "entreprise": {
+        "nom": "Services Exemple"
+      },
+      "typeContrat": "CDI",
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO022"
+      }
+    },
+    {
+      "id": "DEMO023",
+      "intitule": "Développeur C embarqué",
+      "description": "Logiciel embarqué sur microcontrôleur, C et RTOS ; développement d'une petite interface web de configuration.",
+      "dateCreation": "2026-09-29T09:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - SAINT-PRIEST",
+        "latitude": 45.6967,
+        "longitude": 4.9439
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Industrie Exemple"
+      },
+      "typeContrat": "CDI",
+      "secteurActivite": "62",
+      "secteurActiviteLibelle": "Programmation, conseil et autres activités informatiques",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO023"
+      }
+    },
+    {
+      "id": "DEMO024",
+      "intitule": "Développeur COBOL mainframe",
+      "description": "Maintenance d'applications COBOL / CICS sur z/OS, participation à la migration vers une application web.",
+      "dateCreation": "2026-09-27T09:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LIMONEST",
+        "latitude": 45.8372,
+        "longitude": 4.7714
+      },
+      "romeCode": "M1805",
+      "romeLibelle": "Études et développement informatique",
+      "entreprise": {
+        "nom": "Banque Exemple"
+      },
+      "typeContrat": "CDI",
+      "secteurActivite": "64",
+      "secteurActiviteLibelle": "Activités des services financiers",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO024"
+      }
+    },
+    {
+      "id": "DEMO025",
+      "intitule": "Data analyst",
+      "description": "Tableaux de bord Power BI, requêtes SQL, analyses des ventes en lien avec les développeurs web.",
+      "dateCreation": "2026-09-25T09:00:00.000Z",
+      "lieuTravail": {
+        "libelle": "69 - LYON 02",
+        "latitude": 45.7485,
+        "longitude": 4.827
+      },
+      "romeCode": "M1403",
+      "romeLibelle": "Études et prospectives socio-économiques",
+      "entreprise": {
+        "nom": "Distribution Exemple"
+      },
+      "typeContrat": "CDI",
+      "secteurActivite": "47",
+      "secteurActiviteLibelle": "Commerce de détail",
+      "origineOffre": {
+        "origine": "1",
+        "urlOrigine": "https://candidat.francetravail.fr/offres/recherche/detail/DEMO025"
+      }
     }
   ]
 }

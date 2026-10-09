@@ -16,6 +16,35 @@ def normalize_text(text: str) -> str:
     return re.sub(r"[\W_]+", " ", no_accents.lower()).strip()
 
 
+# Variantes d'écriture ramenées à une forme unique (texte déjà normalisé).
+_VARIANTS: tuple[tuple[re.Pattern[str], str], ...] = tuple(
+    (re.compile(pattern), repl)
+    for pattern, repl in (
+        (r"\bdeveloppeurs? (?:euse|se)s?\b", "developpeur"),
+        (r"\bdeveloppeuses?\b", "developpeur"),
+        (r"\bdevelopers?\b", "developpeur"),
+        (r"\bdevs?\b", "developpeur"),
+        (r"\bintegrat(?:eurs? (?:trice|rice)s?|rices?)\b", "integrateur"),
+        (r"\bfull ?stack\b", "fullstack"),
+        (r"\bfront ?end\b", "frontend"),
+        (r"\bback ?end\b", "backend"),
+        (r"\bweb ?(?:master|mestre)s?\b", "webmaster"),
+        (r"\b(?:intelligence artificielle|artificial intelligence)\b", "ia"),
+        (r"\bagentic\b", "agentique"),
+        (r"\be commerce\b", "ecommerce"),
+        (r"\b([a-z]+) js\b", r"\1js"),
+    )
+)
+
+
+def canonical_text(text: str) -> str:
+    """``normalize_text`` + variantes unifiées : « Développeuse full-stack » -> « developpeur fullstack »."""
+    out = normalize_text(text)
+    for pattern, repl in _VARIANTS:
+        out = pattern.sub(repl, out)
+    return out
+
+
 @dataclass(slots=True)
 class JobOffer:
     """Une offre d'emploi, quelle que soit sa source."""
@@ -48,7 +77,7 @@ class JobOffer:
         return "|".join(normalize_text(p) for p in parts)
 
     def searchable_text(self) -> str:
-        return normalize_text(" ".join([self.title, self.description, *self.required_licenses]))
+        return canonical_text(" ".join([self.title, self.description, *self.required_licenses]))
 
     def to_dict(self) -> dict[str, Any]:
         data = asdict(self)

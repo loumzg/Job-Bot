@@ -13,7 +13,8 @@ from datetime import datetime, timedelta, timezone
 from typing import Iterable
 
 from job_bot.geo import haversine_km
-from job_bot.models import JobOffer, normalize_text
+from job_bot.models import JobOffer, canonical_text
+from job_bot.perimetre import in_scope
 
 
 @dataclass(slots=True)
@@ -24,6 +25,7 @@ class Criteria:
     contract_types: list[str] = field(default_factory=list)
     exclusions: list[str] = field(default_factory=list)
     exclude_required_license: bool = False
+    scope: str = ""
     max_age_days: int | None = None
     center: tuple[float, float] | None = None
     radius_km: float | None = None
@@ -32,15 +34,21 @@ class Criteria:
 def matches_keywords(offer: JobOffer, keywords: Iterable[str]) -> bool:
     """Vrai si l'offre contient tous les mots d'au moins un des mots-clés.
 
-    Comparaison sans accents, casse ni ponctuation : « agent accueil » trouve
-    « Agent d'accueil », « commande » trouve « commandes ».
+    Comparaison sans accents, casse ni ponctuation, variantes unifiées :
+    « developpeur web » trouve « Développeuse Web », « full stack » trouve
+    « Fullstack », « front end » trouve « Front-End ».
     """
-    wanted = [normalize_text(k).split() for k in keywords]
+    wanted = [canonical_text(k).split() for k in keywords]
     wanted = [words for words in wanted if words]
     if not wanted:
         return True
     text = offer.searchable_text()
-    return any(all(w in text for w in words) for words in wanted)
+    tokens = set(text.split())
+
+    def found(word: str) -> bool:  # mots courts (« ia », « php ») : mot entier uniquement
+        return word in tokens if len(word) <= 3 else word in text
+
+    return any(all(found(w) for w in words) for words in wanted)
 
 
 def is_excluded(offer: JobOffer, exclusions: Iterable[str], exclude_required_license: bool = False) -> bool:
@@ -48,7 +56,7 @@ def is_excluded(offer: JobOffer, exclusions: Iterable[str], exclude_required_lic
     if exclude_required_license and offer.required_licenses:
         return True
     text = offer.searchable_text()
-    return any(normalize_text(e) in text for e in exclusions if e.strip())
+    return any(canonical_text(e) in text for e in exclusions if e.strip())
 
 
 def matches_sector(offer: JobOffer, rome_codes: Iterable[str], sectors: Iterable[str]) -> bool:
@@ -99,6 +107,8 @@ def apply_filters(
     for offer in offers:
         if offer.source not in skip_keywords_for and not matches_keywords(offer, criteria.keywords):
             rejected["mots-clés"] += 1
+        elif not in_scope(offer, criteria.scope):
+            rejected["périmètre"] += 1
         elif is_excluded(offer, criteria.exclusions, criteria.exclude_required_license):
             rejected["exclusion"] += 1
         elif not matches_sector(offer, criteria.rome_codes, criteria.sectors):

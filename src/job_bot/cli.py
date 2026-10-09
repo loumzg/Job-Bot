@@ -4,16 +4,17 @@ from __future__ import annotations
 
 import argparse
 import logging
+import shutil
 import sys
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
 from job_bot import __version__
 from job_bot.config import Config, ConfigError, load_config, load_dotenv
-from job_bot.models import JobOffer
-from job_bot.runner import resolve_location, run_forever, run_once
+from job_bot.console import render_summary, supports_unicode, use_color
+from job_bot.runner import RunResult, report_context, resolve_location, run_forever, run_once
 from job_bot.sources import SourceError, build_sources
-from job_bot.storage import SeenStore
+from job_bot.storage import SeenStore, export_html
 
 log = logging.getLogger("job_bot")
 
@@ -25,7 +26,7 @@ def _csv_list(value: str) -> list[str]:
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="job-bot",
-        description="Recherche et filtre des offres d'emploi par secteur, mots-clés et localisation.",
+        description="Recherche et filtre des offres d'emploi en développement web (France Travail, RSS).",
         epilog="Les options passées ici surchargent le fichier de configuration.",
     )
     p.add_argument("-c", "--config", type=Path, default=Path("config.toml"),
@@ -49,12 +50,16 @@ def build_parser() -> argparse.ArgumentParser:
     g = p.add_argument_group("filtres")
     g.add_argument("-x", "--exclure", type=_csv_list, metavar="EXPR", help="expressions à exclure, séparées par des virgules")
     g.add_argument("--sans-permis", action="store_true", help="écarte les offres qui exigent un permis")
+    g.add_argument("--perimetre", choices=("dev_web", "aucun"),
+                   help="périmètre métier (défaut : dev_web, métiers du développement web)")
 
     g = p.add_argument_group("sources et sorties")
     g.add_argument("-s", "--sources", type=_csv_list, metavar="NOMS", help="france_travail, rss, fixture")
     g.add_argument("--rss", type=_csv_list, metavar="URLS", help="URL(s) de flux RSS/Atom (active la source rss)")
     g.add_argument("--fixture", type=Path, metavar="FICHIER", help="JSON au format France Travail (source fixture)")
-    g.add_argument("-f", "--formats", type=_csv_list, metavar="csv,json", help="formats d'export")
+    g.add_argument("-f", "--formats", type=_csv_list, metavar="csv,json,html", help="formats d'export")
+    g.add_argument("--rapport", type=Path, metavar="FICHIER",
+                   help="écrit aussi le rapport HTML à ce chemin précis (y compris avec --dry-run)")
     g.add_argument("-o", "--sortie", type=Path, metavar="DOSSIER", help="dossier d'export")
     g.add_argument("--toutes", action="store_true", help="inclut aussi les offres déjà vues")
     g.add_argument("--dry-run", action="store_true",
@@ -94,6 +99,8 @@ def apply_overrides(cfg: Config, args: argparse.Namespace) -> Config:
         cfg.filters.exclusions = args.exclure
     if args.sans_permis:
         cfg.filters.exclude_required_license = True
+    if args.perimetre is not None:
+        cfg.filters.scope = args.perimetre
     if args.sources is not None:
         cfg.sources = args.sources
     if args.rss:
@@ -136,20 +143,16 @@ def setup_logging(log_file: Path | None, verbose: bool) -> None:
     logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 
-def print_offers(offers: list[JobOffer]) -> None:
-    if not offers:
-        print("Aucune offre nouvelle ne correspond aux critères.")
-        return
-    print(f"\n{len(offers)} offre(s) :\n")
-    for o in offers:
-        date = o.published_at.strftime("%d/%m/%Y") if o.published_at else "?"
-        meta = " - ".join(x for x in (o.company, o.location, o.contract_type) if x)
-        print(f"  [{date}] {o.title}")
-        if meta:
-            print(f"           {meta}")
-        if o.url:
-            print(f"           {o.url}")
-    print()
+def print_offers(result: RunResult, cfg: Config) -> None:
+    print(render_summary(
+        result.offers,
+        fetched=result.fetched,
+        keywords=cfg.search.keywords,
+        exported=result.exported,
+        color=use_color(sys.stdout),
+        width=shutil.get_terminal_size().columns,
+        unicode=supports_unicode(sys.stdout),
+    ))
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -182,7 +185,10 @@ def main(argv: list[str] | None = None) -> int:
 
     def cycle() -> int:
         result = run_once(cfg, sources, store, place=place, write=not args.dry_run)
-        print_offers(result.offers)
+        if args.rapport is not None:
+            result.exported.append(export_html(result.offers, args.rapport, report_context(cfg, place, result.fetched)))
+            log.info("Rapport : %s", args.rapport)
+        print_offers(result, cfg)
         return 1 if result.errors and not result.offers and result.fetched == 0 else 0
 
     if args.boucle:

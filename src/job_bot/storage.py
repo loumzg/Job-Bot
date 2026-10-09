@@ -1,4 +1,4 @@
-"""Déduplication, mémorisation des offres déjà vues et exports CSV / JSON."""
+"""Déduplication, mémorisation des offres déjà vues et exports CSV / JSON / HTML."""
 
 from __future__ import annotations
 
@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Iterable
 
 from job_bot.models import JobOffer
+from job_bot.report import ReportContext, render_html
 
 log = logging.getLogger(__name__)
 
@@ -92,11 +93,28 @@ def export_json(offers: list[JobOffer], path: Path) -> Path:
     return path
 
 
-def export(offers: list[JobOffer], directory: Path, formats: Iterable[str], when: datetime | None = None) -> list[Path]:
+def export_html(offers: list[JobOffer], path: Path, context: ReportContext | None = None) -> Path:
+    """Rapport HTML autonome (un seul fichier, ouvrable par double-clic)."""
+    _atomic_write(path, render_html(offers, context))
+    return path
+
+
+def export(
+    offers: list[JobOffer],
+    directory: Path,
+    formats: Iterable[str],
+    when: datetime | None = None,
+    context: ReportContext | None = None,
+) -> list[Path]:
     """Écrit un fichier par format, horodaté : ``offres_AAAAMMJJ-HHMMSS.<ext>``."""
     stamp = (when or datetime.now()).strftime("%Y%m%d-%H%M%S")
     written: list[Path] = []
     for fmt in formats:
         target = directory / f"offres_{stamp}.{fmt}"
-        written.append(export_csv(offers, target) if fmt == "csv" else export_json(offers, target))
+        if fmt == "csv":
+            written.append(export_csv(offers, target))
+        elif fmt == "html":
+            written.append(export_html(offers, target, context))
+        else:
+            written.append(export_json(offers, target))
     return written

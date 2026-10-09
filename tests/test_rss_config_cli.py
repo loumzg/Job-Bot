@@ -68,19 +68,19 @@ def test_invalid_config(data: dict) -> None:
 
 def test_cli_dry_run(capsys: pytest.CaptureFixture[str], tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.chdir(tmp_path)
-    code = main(["--config", str(ROOT / "config.example.toml"), "--dry-run", "-k", "vendeur,accueil"])
+    code = main(["--config", str(ROOT / "config.example.toml"), "--dry-run"])
     out = capsys.readouterr().out
     assert code == 0
-    assert "Vendeur en magasin de sport" in out
-    assert "Agent d'accueil" in out
-    assert "Livreur" not in out  # exclu : « permis B obligatoire »
+    assert "18 offres retenues sur 25" in out
+    assert "Webmaster WordPress" in out
+    assert "commercial" not in out and "COBOL" not in out  # faux positifs écartés par le périmètre
     assert not any(tmp_path.iterdir())  # dry run : rien n'est écrit
 
 
 def test_cli_fixture_writes_exports_and_remembers(tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
                                                   capsys: pytest.CaptureFixture[str]) -> None:
     monkeypatch.chdir(tmp_path)
-    args = ["--config", "absent.toml", "-s", "fixture", "--depuis", "0", "-f", "json", "-k", "vendeur"]
+    args = ["--config", "absent.toml", "-s", "fixture", "--depuis", "0", "-f", "json", "-k", "développeur php"]
     assert main(args) == 0
     assert len(list((tmp_path / "output").glob("offres_*.json"))) == 1
     assert (tmp_path / "output" / "seen_jobs.json").exists()
